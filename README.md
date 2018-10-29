@@ -48,10 +48,10 @@ OPTIONS
 
 EXAMPLE
   $ services-msi hello
-  hello world from ./src/hello.ts!
+  hello world from ./src/bundle.ts!
 ```
 
-_See code: [src/commands/hello.ts](https://github.com/LabShare/services-msi-cli/blob/v0.0.0/src/commands/hello.ts)_
+_See code: [src/commands/bundle.ts](https://github.com/LabShare/services-msi-cli/blob/v0.0.0/src/commands/bundle.ts)_
 
 ## `services-msi help [COMMAND]`
 
