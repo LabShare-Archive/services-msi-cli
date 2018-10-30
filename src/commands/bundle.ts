@@ -33,10 +33,10 @@ export default class Bundle extends Command {
   }
 
   async run() {
-    const {flags} = this.parse(Bundle)  // TODO: use flags for setting up general options like src/output
+    const {flags} = this.parse(Bundle)
 
     try {
-      const pkg = readPkg.sync(flags.source)  // TODO: change to project dist folder
+      const pkg = readPkg.sync(flags.source)
 
       // Create a temp directory for the project distribution files
       const projectTemp = temp.mkdirSync('api-')
