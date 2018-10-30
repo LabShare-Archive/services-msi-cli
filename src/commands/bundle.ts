@@ -28,12 +28,12 @@ export default class Bundle extends Command {
     source: flags.string({
       char: 's',
       description: 'Project source folder',
-      default: process.cwd()
+      default: process.cwd
     }),
     output: flags.string({
       char: 'o',
       description: 'Installer output folder',
-      default: process.cwd()
+      default: process.cwd
     }),
     ini: flags.string({
       char: 'i',

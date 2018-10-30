@@ -13,7 +13,7 @@ describe('bundle', () => {
       'bundle',
       '--source', resolve(fixtures, 'example-project')
     ])
-    .it('runs bundle', ctx => {
+    .it('runs bundle with a custom source directory', ctx => {
       expect(ctx.stdout).to.contain('Creating installer "nodejs-msi-0.0.3.msi" with WiX toolchain...')
     })
 
@@ -26,7 +26,7 @@ describe('bundle', () => {
       '--source', resolve(fixtures, 'example-project'),
       '--ini', resolve(fixtures, 'test-config.ini')
     ])
-    .it('runs bundle', ctx => {
+    .it('runs bundle with an INI config file', ctx => {
       expect(ctx.stdout).to.contain('Creating installer "my-product-0.0.3.msi" with WiX toolchain...')
     })
 })
