@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/LabShare/services-msi-cli.git/compare/v1.0.0...v1.0.1) (2018-10-30)
+
+
+### Bug Fixes
+
+* **flags:** fix source/output flag defaults ([54eae84](https://github.com/LabShare/services-msi-cli.git/commit/54eae84))
+
 # 1.0.0 (2018-10-30)
 
 

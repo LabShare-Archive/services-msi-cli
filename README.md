@@ -21,7 +21,7 @@ $ npm install -g @labshare/services-msi-cli
 $ services-msi COMMAND
 running command...
 $ services-msi (-v|--version|version)
-@labshare/services-msi-cli/0.0.0-development darwin-x64 node-v8.11.2
+@labshare/services-msi-cli/1.0.0 linux-x64 node-v10.13.0
 $ services-msi --help [COMMAND]
 USAGE
   $ services-msi COMMAND
@@ -44,8 +44,8 @@ USAGE
 OPTIONS
   -h, --help           show CLI help
   -i, --ini=ini        Path to INI format configuration file for customizing placeholder values
-  -o, --output=output  [default: /Users/virtanevakd/Desktop/Projects/services-msi-cli] Installer output folder
-  -s, --source=source  [default: /Users/virtanevakd/Desktop/Projects/services-msi-cli] Project source folder
+  -o, --output=output  [default: /home/travis/build/LabShare/services-msi-cli] Installer output folder
+  -s, --source=source  [default: /home/travis/build/LabShare/services-msi-cli] Project source folder
 
 EXAMPLES
   $ services-msi bundle
@@ -55,7 +55,7 @@ EXAMPLES
   Customizes placeholder values with the given config file. See the example INI config for accepted values.
 ```
 
-_See code: [src/commands/bundle.ts](https://github.com/LabShare/services-msi-cli/blob/v0.0.0-development/src/commands/bundle.ts)_
+_See code: [src/commands/bundle.ts](https://github.com/LabShare/services-msi-cli/blob/v1.0.0/src/commands/bundle.ts)_
 
 ## `services-msi help [COMMAND]`
 
