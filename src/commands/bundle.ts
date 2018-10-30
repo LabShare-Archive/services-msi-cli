@@ -43,7 +43,7 @@ export default class Bundle extends Command {
 
   async run() {
     const {flags} = this.parse(Bundle)
-    const imageRoot = path.resolve(__dirname, '..', 'lib', 'images')
+    const installerFilesRoot = path.resolve(__dirname, '..', 'lib', 'installer')
 
     try {
       const pkg = readPkg.sync({cwd: flags.source} as any)
@@ -56,8 +56,8 @@ export default class Bundle extends Command {
 
       let iniConfig = {
         installer: {
-          icon: path.join(imageRoot, 'icon.ico'),
-          banner: path.join(imageRoot, 'msi-banner.png')
+          icon: path.join(installerFilesRoot, 'icon.ico'),
+          license: path.join(installerFilesRoot, 'license.rtf')
         },
         api: {
           // tslint:disable-next-line:no-http-string
@@ -87,6 +87,7 @@ export default class Bundle extends Command {
         productName: iniConfig.product.name,
         productIcon: iniConfig.installer.icon,
         msiBanner: iniConfig.installer.banner,
+        msiLicense: iniConfig.installer.license,
         apiStartUrl: iniConfig.api.url,
         nodePath: which.sync('node'),
 

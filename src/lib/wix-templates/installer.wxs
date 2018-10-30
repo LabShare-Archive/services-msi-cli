@@ -16,8 +16,7 @@
 
     <Media Id='1' EmbedCab='yes' Cabinet="main.cab" />
 
-    <WixVariable Id="WixUILicenseRtf" Value="$(var.SourceDir)\LICENSE.rtf" />
-    <WixVariable Id="WixUIBannerBmp" Value="<%= msiBanner %>" />
+    <WixVariable Id="WixUILicenseRtf" Value="<%= msiLicense %>" />
 
     <Icon Id="icon.ico" SourceFile="<%= productIcon %>"/>
     <Property Id="ARPPRODUCTICON" Value="icon.ico" />
