@@ -21,7 +21,7 @@ $ npm install -g @labshare/services-msi-cli
 $ services-msi COMMAND
 running command...
 $ services-msi (-v|--version|version)
-@labshare/services-msi-cli/0.0.0 darwin-x64 node-v8.11.2
+@labshare/services-msi-cli/0.0.0-development darwin-x64 node-v8.11.2
 $ services-msi --help [COMMAND]
 USAGE
   $ services-msi COMMAND
@@ -30,28 +30,32 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`services-msi hello [FILE]`](#services-msi-hello-file)
+* [`services-msi bundle`](#services-msi-bundle)
 * [`services-msi help [COMMAND]`](#services-msi-help-command)
 
-## `services-msi hello [FILE]`
+## `services-msi bundle`
 
-describe the command here
+Creates an MSI for a Node.js API project
 
 ```
 USAGE
-  $ services-msi hello [FILE]
+  $ services-msi bundle
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -h, --help           show CLI help
+  -i, --ini=ini        Path to INI format configuration file for customizing placeholder values
+  -o, --output=output  [default: /Users/virtanevakd/Desktop/Projects/services-msi-cli] Installer output folder
+  -s, --source=source  [default: /Users/virtanevakd/Desktop/Projects/services-msi-cli] Project source folder
 
-EXAMPLE
-  $ services-msi hello
-  hello world from ./src/bundle.ts!
+EXAMPLES
+  $ services-msi bundle
+  $ services-msi bundle --output /output/dir --source /my/node/project
+  Generates "<project-name>-<project-version>.msi"
+  $ services-msi bundle --ini path/to/config.ini
+  Customizes placeholder values with the given config file. See the example INI config for accepted values.
 ```
 
-_See code: [src/commands/bundle.ts](https://github.com/LabShare/services-msi-cli/blob/v0.0.0/src/commands/bundle.ts)_
+_See code: [src/commands/bundle.ts](https://github.com/LabShare/services-msi-cli/blob/v0.0.0-development/src/commands/bundle.ts)_
 
 ## `services-msi help [COMMAND]`
 
