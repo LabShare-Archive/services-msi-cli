@@ -71,12 +71,14 @@
   },
   "repository": "LabShare/services-msi-cli",
   "scripts": {
+    "prepare": "npm run version",
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "tslint -p test -t stylish",
     "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
     "version": "oclif-dev readme && git add README.md",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "oclif-dev": "oclif-dev"
   },
   "types": "lib/index.d.ts",
   "release": {
