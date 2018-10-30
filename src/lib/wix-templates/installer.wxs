@@ -17,10 +17,9 @@
     <Media Id='1' EmbedCab='yes' Cabinet="main.cab" />
 
     <WixVariable Id="WixUILicenseRtf" Value="$(var.SourceDir)\LICENSE.rtf" />
-    <WixVariable Id="WixUIBannerBmp" Value="$(var.SourceDir)\public\images\msi-banner.bmp" />
-    <WixVariable Id="WixUIDialogBmp" Value="$(var.SourceDir)\public\images\msi-welcome.bmp" />
+    <WixVariable Id="WixUIBannerBmp" Value="<%= msiBanner %>" />
 
-    <Icon Id="icon.ico" SourceFile="$(var.SourceDir)\public\images\logo.ico"/>
+    <Icon Id="icon.ico" SourceFile="<%= productIcon %>"/>
     <Property Id="ARPPRODUCTICON" Value="icon.ico" />
 
     <Property Id="MSIUSEREALADMINDETECTION" Value="1" />

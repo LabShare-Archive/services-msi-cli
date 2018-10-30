@@ -34,6 +34,7 @@ export default class Bundle extends Command {
 
   async run() {
     const {flags} = this.parse(Bundle)
+    const imageRoot = path.resolve(__dirname, '..', 'lib', 'images')
 
     try {
       const pkg = readPkg.sync(flags.source)
@@ -53,6 +54,8 @@ export default class Bundle extends Command {
         company: 'LabShare',
         version: pkg.version,
         productName: pkg.name,
+        productIcon: path.join(imageRoot, 'icon.ico'),
+        msiBanner: path.join(imageRoot, 'msi-banner.bmp'),
         // tslint:disable-next-line:no-http-string
         apiStartUrl: 'http://localhost:9000',
         nodePath: which.sync('node'),
