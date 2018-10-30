@@ -2,8 +2,10 @@ import {Command, flags} from '@oclif/command'
 import {execSync} from 'child_process'
 import cli from 'cli-ux'
 import dashify = require('dashify')
+import * as fs from 'fs'
 import * as gulp from 'gulp'
 import * as template from 'gulp-template'
+import ini = require('ini')
 import * as path from 'path'
 import readPkg = require('read-pkg')
 import temp = require('temp')
@@ -15,7 +17,10 @@ export default class Bundle extends Command {
 
   static examples = [
     '$ services-msi bundle',
-    '$ services-msi bundle -o /output/dir -s /my/node/project'
+    '$ services-msi bundle --output /output/dir --source /my/node/project',
+    'Generates "<project-name>-<project-version>.msi"',
+    '$ services-msi bundle --ini path/to/config.ini',
+    'Customizes placeholder values with the given config file. See the example INI config for accepted values.'
   ]
 
   static flags = {
@@ -29,6 +34,10 @@ export default class Bundle extends Command {
       char: 'o',
       description: 'Installer output folder',
       default: process.cwd()
+    }),
+    ini: flags.string({
+      char: 'i',
+      description: 'Path to INI format configuration file for customizing placeholder values'
     })
   }
 
@@ -37,7 +46,7 @@ export default class Bundle extends Command {
     const imageRoot = path.resolve(__dirname, '..', 'lib', 'images')
 
     try {
-      const pkg = readPkg.sync(flags.source)
+      const pkg = readPkg.sync({cwd: flags.source} as any)
 
       // Create a temp directory for the project distribution files
       const projectTemp = temp.mkdirSync('api-')
@@ -45,19 +54,40 @@ export default class Bundle extends Command {
       // Create another temp directory for the WiX files
       const wixTemp = temp.mkdirSync('wix-')
 
+      let iniConfig = {
+        installer: {
+          icon: path.join(imageRoot, 'icon.ico'),
+          banner: path.join(imageRoot, 'msi-banner.png')
+        },
+        api: {
+          // tslint:disable-next-line:no-http-string
+          url: 'http://localhost:8000'
+        },
+        service: {
+          name: 'labshare-service'
+        },
+        product: {
+          name: pkg.name,
+          company: 'LabShare'
+        }
+      }
+
+      if (flags.ini) {
+        iniConfig = {iniConfig, ...ini.parse(fs.readFileSync(flags.ini, 'utf-8'))}
+      }
+
       // TODO: add INI file parser for customizing values
       const placeholderValues = {
-        windowsServiceName: 'labshare-service',
+        windowsServiceName: iniConfig.service.name,
         installerProductId: uuidv4(),
         installerUpgradeCode: uuidv4(),
-        packageDescription: pkg.description || 'LabShare service',
-        company: 'LabShare',
+        packageDescription: pkg.description || 'LabShare API service',
+        company: iniConfig.product.company,
         version: pkg.version,
-        productName: pkg.name,
-        productIcon: path.join(imageRoot, 'icon.ico'),
-        msiBanner: path.join(imageRoot, 'msi-banner.bmp'),
-        // tslint:disable-next-line:no-http-string
-        apiStartUrl: 'http://localhost:9000',
+        productName: iniConfig.product.name,
+        productIcon: iniConfig.installer.icon,
+        msiBanner: iniConfig.installer.banner,
+        apiStartUrl: iniConfig.api.url,
         nodePath: which.sync('node'),
 
         // Since the nssm executable is only ~250KB, it is bundled with the CLI
