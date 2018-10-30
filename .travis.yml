@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+  - lts/*
+  - node
+before_install:
+  - git config --global url."git@github.com:".insteadOf "https://github.com/"
+script:
+  - npm i -g codecov
+  - npm test
+  - codecov
+cache:
+  directories:
+    - ~/.npm
+notifications:
+  email: false
+after_success:
+  - npm run semantic-release
+branches:
+  except:
+    - /^vd+.d+.d+$/
