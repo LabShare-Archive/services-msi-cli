@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+
+  <Product Id="<%= installerProductId %>"
+          UpgradeCode="<%= installerUpgradeCode %>"
+          Language='1033' Codepage='1252' Version='<%= version %>'
+          Name="<%= productName %>"
+          Manufacturer='<%= company %>'>
+
+    <Package Id='*'
+          Keywords='Installer'
+          Description="<%= packageDescription %>"
+          Manufacturer='<%= company %>'
+          InstallerVersion='100' Languages='1033' Compressed='yes' SummaryCodepage='1252' />
+
+    <Media Id='1' EmbedCab='yes' Cabinet="main.cab" />
+
+    <WixVariable Id="WixUILicenseRtf" Value="<%= msiLicense %>" />
+
+    <Icon Id="icon.ico" SourceFile="<%= productIcon %>"/>
+    <Property Id="ARPPRODUCTICON" Value="icon.ico" />
+
+    <Property Id="MSIUSEREALADMINDETECTION" Value="1" />
+
+    <Directory Id='TARGETDIR' Name='SourceDir'>
+      <Directory Id='ProgramFilesFolder' Name='PFiles'>
+        <Directory Id='MyCompany_Folder' Name="<%= company %>">
+          <Directory Id='INSTALLDIR' Name="<%= productName %>">
+          </Directory>
+        </Directory>
+      </Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="<%= productName %>" />
+      </Directory>
+    </Directory>
+
+    <CustomAction Id="LaunchBrowser"
+          ExeCommand="explorer.exe &quot;<%= apiStartUrl %>/&quot;"
+          Directory="INSTALLDIR"
+          Return="asyncNoWait" >
+    </CustomAction>
+
+    <InstallExecuteSequence>
+      <Custom Action='RegisterLabShareService'
+              Before='StartServices'>NOT Installed</Custom>
+      <Custom Action="LaunchBrowser"
+              OnExit="success">NOT Installed</Custom>
+    </InstallExecuteSequence>
+
+    <Feature Id='Complete' Level='1'>
+      <ComponentGroupRef Id='MainComponentGroup' />
+      <ComponentRef Id="ApplicationShortcut" />
+      <Component Id="node_component" Guid="{AAAAAAAA-C0C2-4D3F-BC22-EC7AE4963FFF}" Directory="INSTALLDIR">
+        <File Id="node" KeyPath="yes" Source="<%= nodePath %>" />
+      </Component>
+
+      <Component Id="nssm_component" Guid="{AAAAAAAA-CBB2-4F3F-BC22-EC7AE4963FFF}" Directory="INSTALLDIR">
+        <File Id="nssm" KeyPath="yes" Source="<%= nssmPath %>" />
+
+        <ServiceControl Id="ControlMyProductService"
+                         Name="<%= windowsServiceName %>"
+                         Remove="uninstall"
+        				         Start="install"
+                         Stop="both" />
+      </Component>
+
+    </Feature>
+
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
+
+    <UIRef Id="WixUI" />
+
+  </Product>
+</Wix>
