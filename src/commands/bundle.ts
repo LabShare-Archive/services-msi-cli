@@ -53,6 +53,8 @@ export default class Bundle extends Command {
         company: 'LabShare',
         version: pkg.version,
         productName: pkg.name,
+        // tslint:disable-next-line:no-http-string
+        apiStartUrl: 'http://localhost:9000',
         nodePath: which.sync('node'),
 
         // Since the nssm executable is only ~250KB, it is bundled with the CLI

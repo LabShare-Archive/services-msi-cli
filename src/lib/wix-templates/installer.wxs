@@ -38,7 +38,7 @@
     </Directory>
 
     <CustomAction Id="LaunchBrowser"
-          ExeCommand="explorer.exe &quot;http://localhost:9000/&quot;"
+          ExeCommand="explorer.exe &quot;<%= apiStartUrl %>/&quot;"
           Directory="INSTALLDIR"
           Return="asyncNoWait" >
     </CustomAction>
