@@ -72,11 +72,11 @@ export default class Bundle extends Command {
         }
       }
 
+      // Override defaults using the INI configuration file
       if (flags.ini) {
-        iniConfig = {iniConfig, ...ini.parse(fs.readFileSync(flags.ini, 'utf-8'))}
+        iniConfig = {...iniConfig, ...ini.parse(fs.readFileSync(flags.ini, 'utf-8'))}
       }
 
-      // TODO: add INI file parser for customizing values
       const placeholderValues = {
         windowsServiceName: iniConfig.service.name,
         installerProductId: uuidv4(),
@@ -86,7 +86,6 @@ export default class Bundle extends Command {
         version: pkg.version,
         productName: iniConfig.product.name,
         productIcon: iniConfig.installer.icon,
-        msiBanner: iniConfig.installer.banner,
         msiLicense: iniConfig.installer.license,
         apiStartUrl: iniConfig.api.url,
         nodePath: which.sync('node'),
