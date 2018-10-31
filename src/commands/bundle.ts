@@ -69,6 +69,9 @@ export default class Bundle extends Command {
         product: {
           name: pkg.name,
           company: 'LabShare'
+        },
+        tools: {
+          wix: ''
         }
       }
 
@@ -126,11 +129,8 @@ export default class Bundle extends Command {
 
       cli.action.stop()
 
-      // TODO: provide configuration flag for bin path
-      const wixDir = 'c:/Program Files (x86)/WiX Toolset v3.11/bin'
-
       const wixOutput = `${wixTemp}/output`
-      const cmdOptions = {cwd: wixDir}
+      const cmdOptions = {cwd: iniConfig.tools.wix}
 
       // Example: product-name-v1.2.3.msi
       const installerName = `${dashify(placeholderValues.productName)}-${placeholderValues.version}.msi`
