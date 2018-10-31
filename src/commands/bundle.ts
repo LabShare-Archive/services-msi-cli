@@ -13,7 +13,8 @@ import uuidv4 = require('uuid/v4')
 import which = require('which')
 
 export default class Bundle extends Command {
-  static description = 'Creates an MSI for a Node.js API project'
+  static description = 'Creates an MSI for a Node.js API project. Requires Windows and the http://wixtoolset.org/' +
+    ' toolchain installed.'
 
   static examples = [
     '$ services-msi bundle',
