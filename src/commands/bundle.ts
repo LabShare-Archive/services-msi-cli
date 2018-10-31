@@ -21,7 +21,8 @@ export default class Bundle extends Command {
     '$ services-msi bundle --output /output/dir --source /my/node/project',
     'Generates "<project-name>-<project-version>.msi"',
     '$ services-msi bundle --ini path/to/config.ini',
-    'Customizes placeholder values with the given config file. See the example INI config for accepted values.'
+    'Customizes placeholder values with the given config file. See the' +
+    ' [example](https://github.com/LabShare/services-msi-cli/blob/master/example-config.ini) for accepted values.'
   ]
 
   static flags = {
@@ -65,7 +66,8 @@ export default class Bundle extends Command {
           url: 'http://localhost:8000'
         },
         service: {
-          name: 'labshare-service'
+          name: 'labshare-service',
+          params: 'index.js'
         },
         product: {
           name: pkg.name,
@@ -83,6 +85,7 @@ export default class Bundle extends Command {
 
       const placeholderValues = {
         windowsServiceName: iniConfig.service.name,
+        windowsServiceParams: iniConfig.service.params,
         installerProductId: uuidv4(),
         installerUpgradeCode: uuidv4(),
         packageDescription: pkg.description || 'LabShare API service',
