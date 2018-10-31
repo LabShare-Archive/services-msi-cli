@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/LabShare/services-msi-cli.git/compare/v1.0.1...v1.1.0) (2018-10-31)
+
+
+### Features
+
+* **wix:** support customization of WiX bin folder using INI file ([68203c5](https://github.com/LabShare/services-msi-cli.git/commit/68203c5))
+
 ## [1.0.1](https://github.com/LabShare/services-msi-cli.git/compare/v1.0.0...v1.0.1) (2018-10-30)
 
 

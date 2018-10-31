@@ -21,7 +21,7 @@ $ npm install -g @labshare/services-msi-cli
 $ services-msi COMMAND
 running command...
 $ services-msi (-v|--version|version)
-@labshare/services-msi-cli/1.0.0 linux-x64 node-v10.13.0
+@labshare/services-msi-cli/1.0.1 linux-x64 node-v10.13.0
 $ services-msi --help [COMMAND]
 USAGE
   $ services-msi COMMAND
@@ -55,7 +55,7 @@ EXAMPLES
   Customizes placeholder values with the given config file. See the example INI config for accepted values.
 ```
 
-_See code: [src/commands/bundle.ts](https://github.com/LabShare/services-msi-cli/blob/v1.0.0/src/commands/bundle.ts)_
+_See code: [src/commands/bundle.ts](https://github.com/LabShare/services-msi-cli/blob/v1.0.1/src/commands/bundle.ts)_
 
 ## `services-msi help [COMMAND]`
 
