@@ -6,12 +6,12 @@ import * as fs from 'fs'
 import * as gulp from 'gulp'
 import * as template from 'gulp-template'
 import ini = require('ini')
+import {merge} from 'lodash'
 import * as path from 'path'
 import readPkg = require('read-pkg')
 import temp = require('temp')
 import uuidv4 = require('uuid/v4')
 import which = require('which')
-import {merge} from 'lodash'
 
 export default class Bundle extends Command {
   static description = 'Creates an MSI for a Node.js API project. Requires Windows and the http://wixtoolset.org/' +
