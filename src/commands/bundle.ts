@@ -6,6 +6,7 @@ import * as fs from 'fs'
 import * as gulp from 'gulp'
 import * as template from 'gulp-template'
 import ini = require('ini')
+import {merge} from 'lodash'
 import * as path from 'path'
 import readPkg = require('read-pkg')
 import temp = require('temp')
@@ -21,8 +22,8 @@ export default class Bundle extends Command {
     '$ services-msi bundle --output /output/dir --source /my/node/project',
     'Generates "<project-name>-<project-version>.msi"',
     '$ services-msi bundle --ini path/to/config.ini',
-    'Customizes placeholder values with the given config file. See the' +
-    ' [example](https://github.com/LabShare/services-msi-cli/blob/master/example-config.ini) for accepted values.'
+    'Customizes placeholder values with the given config file. View the' +
+    ' https://github.com/LabShare/services-msi-cli/blob/master/example-config.ini for accepted values.'
   ]
 
   static flags = {
@@ -80,7 +81,7 @@ export default class Bundle extends Command {
 
       // Override defaults using the INI configuration file
       if (flags.ini) {
-        iniConfig = {...iniConfig, ...ini.parse(fs.readFileSync(flags.ini, 'utf-8'))}
+        iniConfig = merge(iniConfig, ini.parse(fs.readFileSync(flags.ini, 'utf-8')))
       }
 
       const placeholderValues = {
