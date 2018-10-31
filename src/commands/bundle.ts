@@ -97,7 +97,7 @@ export default class Bundle extends Command {
         nssmPath: path.resolve(__dirname, '..', 'lib', 'binaries', 'nssm.exe')
       }
 
-      cli.action.start('Copying project files to temporary directories', 'done', {stdout: true})
+      cli.action.start('Copying project files to temporary directory', 'done', {stdout: true})
 
       // Copy project files to project temp directory
       await Promise.all([
