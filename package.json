@@ -1,7 +1,7 @@
 {
   "name": "@labshare/services-msi-cli",
   "description": "Generates a MSI for a Node.js API service",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "author": "KalleV @KalleV",
   "bin": {
     "services-msi": "./bin/run"
