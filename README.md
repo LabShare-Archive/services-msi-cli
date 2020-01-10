@@ -8,7 +8,7 @@ Generates a MSI for a Node.js API service
 [![Build Status](https://travis-ci.com/LabShare/services-msi-cli.svg?branch=master)](https://travis-ci.com/LabShare/services-msi-cli)
 [![Codecov](https://codecov.io/gh/LabShare/services-msi-cli/branch/master/graph/badge.svg)](https://codecov.io/gh/LabShare/services-msi-cli)
 [![Downloads/week](https://img.shields.io/npm/dw/@labshare/services-msi-cli.svg)](https://npmjs.org/package/@labshare/services-msi-cli)
-[![License](https://img.shields.io/npm/l/@labshare/services-msi-cli.svg)](https://github.com/LabShare/services-msi-cli/blob/master/package.json)
+[![License](https://img.shields.io/npm/l/@labshare/services-msi-cli.svg)](https://github.com/LabShare/services-msi-cli/blob/master/package.json) [![Greenkeeper badge](https://badges.greenkeeper.io/LabShare/services-msi-cli.svg)](https://greenkeeper.io/)
 
 <!-- toc -->
 * [Usage](#usage)
