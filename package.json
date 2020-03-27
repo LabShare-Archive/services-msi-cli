@@ -9,7 +9,7 @@
   "bugs": "https://github.com/LabShare/services-msi-cli/issues",
   "dependencies": {
     "@oclif/command": "^1.5.4",
-    "@oclif/config": "^1.8.8",
+    "@oclif/config": "^1.14.0",
     "@oclif/plugin-help": "^2.1.3",
     "cli-ux": "^4.9.1",
     "dashify": "^1.0.0",
